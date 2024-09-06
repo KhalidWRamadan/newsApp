@@ -5,8 +5,8 @@ import 'package:news_app_ui_setup/models/news_model.dart';
 import 'package:news_app_ui_setup/services/news_services.dart';
 
 class NewsListViewBuilder extends StatefulWidget {
-  const NewsListViewBuilder({super.key});
-
+  const NewsListViewBuilder({super.key, required this.category});
+  final String category;
   @override
   State<NewsListViewBuilder> createState() => _NewsListViewBuilderState();
 }
@@ -43,12 +43,21 @@ class _NewsListViewBuilderState extends State<NewsListViewBuilder> {
   @override
   void initState() {
     super.initState();
-    future = NewsServices().getNews(category: 'general');
+    //to access the category parameter you must use widget keyword to get to the
+    //widget associated with this state
+    future = NewsServices().getNews(category: widget.category);
   }
 
   @override
   Widget build(BuildContext context) {
-    return
+    return future == null
+        ? const Center(
+            child: Text(
+              'No Additional news, try again later !',
+              style: TextStyle(fontSize: 32, fontWeight: FontWeight.w500),
+            ),
+          )
+        :
         //Future builder is an easier way to deal with data that is requested from an api
         //future parameter takes a future type which includes the request
         //the builder is a callBack that has the context of the method and a snapshot

@@ -43,7 +43,7 @@ class HomeView extends StatelessWidget {
                 height: 32,
               ),
             ),
-            const NewsListViewBuilder(),
+            const NewsListViewBuilder(category: 'general'),
             //Expanded could not be used in this case because customScroll view
             //does not allow unbounded heights
             // const SliverToBoxAdapter(
