@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 import 'package:news_app_ui_setup/views/home_view.dart';
 
-void main() {
+void main() async {
+  await dotenv.load(fileName: "api.env");
   runApp(const NewsApp());
 }
 
