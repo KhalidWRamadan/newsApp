@@ -8,29 +8,36 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        // لون شفاف
-        backgroundColor: Colors.transparent,
-        //backgroundColor: Colors.white,
-        title: const Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              'News',
-              style: TextStyle(fontSize: 24, color: Colors.black),
-            ),
-            Text(
-              'App',
-              style: TextStyle(fontSize: 24, color: Color(0xFFebd294)),
-            ),
-          ],
-        ),
-      ),
       body: Padding(
         padding: const EdgeInsets.all(12),
         child: CustomScrollView(
           slivers: [
+            //scrollable app bar
+            const SliverAppBar(
+              floating: true, // Makes the app bar reappear when scrolling up
+              snap:
+                  true, // Makes the app bar immediately appear when scrolling up
+              pinned:
+                  false, // Set to true if you want to always show a part of the app bar
+              //expandedHeight: 200.0, // Height of the app bar when expanded
+              elevation: 0,
+              backgroundColor: Colors.white,
+              //backgroundColor: Colors.white,
+              title: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'News',
+                    style: TextStyle(fontSize: 24, color: Colors.black),
+                  ),
+                  Text(
+                    'App',
+                    style: TextStyle(fontSize: 24, color: Color(0xFFebd294)),
+                  ),
+                ],
+              ),
+            ),
+
             //sliver to box adapter converts a widget to a sliver because
             //CustomScrollView only accepts sliver type
             //normally customScrollViews don't accept listView.builder or expanded
@@ -51,18 +58,6 @@ class HomeView extends StatelessWidget {
             // ),
           ],
         ),
-        // this code is rejected because the category keeps on the top while scrolling
-        // in the news tile which feels annoying so we used custom scroll views
-        // child: Column(
-        //   children: [
-        //     CategoriesListView(),
-        //     const SizedBox(
-        //       height: 32,
-        //     ),
-        //     //expanded makes the lisview to adapt to it's size
-        //     const Expanded(child: NewsTileListview()),
-        //   ],
-        // ),
       ),
     );
   }
