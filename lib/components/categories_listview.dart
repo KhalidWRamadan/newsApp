@@ -8,13 +8,13 @@ class CategoriesListView extends StatelessWidget {
   });
 
   final List<CategoryModel> categories = [
-    CategoryModel(categoryName: 'Business', image: 'assets/business.avif'),
+    CategoryModel(categoryName: 'Business', image: 'assets/business.jpg'),
     CategoryModel(
         categoryName: 'entertainment', image: 'assets/entertaiment.avif'),
     CategoryModel(categoryName: 'Health', image: 'assets/health.avif'),
-    CategoryModel(categoryName: 'General', image: 'assets/general.avif'),
+    CategoryModel(categoryName: 'General', image: 'assets/general.jpg'),
     CategoryModel(categoryName: 'Science', image: 'assets/science.avif'),
-    CategoryModel(categoryName: 'Sports', image: 'assets/sports.avif'),
+    CategoryModel(categoryName: 'Sports', image: 'assets/sports.jpg'),
     CategoryModel(categoryName: 'Technology', image: 'assets/technology.jpeg'),
   ];
 
