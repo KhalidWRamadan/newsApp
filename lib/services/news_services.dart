@@ -9,18 +9,15 @@ class NewsServices {
   Future<List<NewsModel>?> getNews({required String category}) async {
     try {
       Response response = await dio.get(
-          'https://newsapi.org/v2/top-headlines?country=us&apiKey=3c077f55401d45f196e44d297bdfb1cd&category=$category');
+          'https://api.mediastack.com/v1/news?access_key=4624ba140054d7db85a157914d68e997&languages=en&categories=$category&limit=100&sources=cnn,bbc');
       Map<String, dynamic> jsonData = response.data;
-      int totalResults = jsonData['totalResults'];
-      if (totalResults == 0) return null;
-      List<dynamic> articles = jsonData['articles'];
+      // int totalResults = jsonData['totalResults'];
+      // if (totalResults == 0) return null;
+      List<dynamic> articles = jsonData['data'];
       List<NewsModel> articleList = [];
       for (var article in articles) {
         if (article['title'] == '[Removed]') continue;
-        NewsModel news = NewsModel(
-            image: article['urlToImage'],
-            title: article['title'],
-            desc: article['description']);
+        NewsModel news = NewsModel.fromJson(article);
         articleList.add(news);
       }
       return articleList;
