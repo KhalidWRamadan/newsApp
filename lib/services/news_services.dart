@@ -10,8 +10,6 @@ class NewsServices {
   Future<List<NewsModel>?> getNews({required String category}) async {
     try {
       String? apiKey = dotenv.env['API_KEY'];
-      print(apiKey);
-
       Response response = await dio.get(
           'https://api.mediastack.com/v1/news?access_key=$apiKey&languages=en&categories=$category&limit=100&sources=cnn,bbc');
       Map<String, dynamic> jsonData = response.data;
